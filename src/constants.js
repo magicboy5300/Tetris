@@ -11,11 +11,60 @@ export const GRID_HEIGHT = 20;
 export const BLOCK_SIZE = 30; // Default generic block size, will be dynamic
 
 export const TETROMINOS = {
-  I: { shape: [[1, 1, 1, 1]], color: COLORS.MATRIX_LIGHT },
-  J: { shape: [[1, 0, 0], [1, 1, 1]], color: COLORS.MATRIX_LIGHT },
-  L: { shape: [[0, 0, 1], [1, 1, 1]], color: COLORS.MATRIX_LIGHT },
-  O: { shape: [[1, 1], [1, 1]], color: COLORS.MATRIX_LIGHT },
-  S: { shape: [[0, 1, 1], [1, 1, 0]], color: COLORS.MATRIX_LIGHT },
-  T: { shape: [[0, 1, 0], [1, 1, 1]], color: COLORS.MATRIX_LIGHT },
-  Z: { shape: [[1, 1, 0], [0, 1, 1]], color: COLORS.MATRIX_LIGHT },
+  I: {
+    shape: [
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 0, 0]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
+  J: {
+    shape: [
+      [1, 0, 0],
+      [1, 1, 1],
+      [0, 0, 0]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
+  L: {
+    shape: [
+      [0, 0, 1],
+      [1, 1, 1],
+      [0, 0, 0]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
+  O: {
+    shape: [
+      [1, 1],
+      [1, 1]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
+  S: {
+    shape: [
+      [0, 1, 1],
+      [1, 1, 0],
+      [0, 0, 0]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
+  T: {
+    shape: [
+      [0, 1, 0],
+      [1, 1, 1],
+      [0, 0, 0]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
+  Z: {
+    shape: [
+      [1, 1, 0],
+      [0, 1, 1],
+      [0, 0, 0]
+    ],
+    color: COLORS.MATRIX_LIGHT
+  },
 };
