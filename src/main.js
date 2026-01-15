@@ -110,6 +110,28 @@ function resizeGame() {
 resizeGame();
 window.addEventListener('resize', resizeGame);
 
+// Modal Logic
+const infoBtn = document.getElementById('info-btn');
+const infoModal = document.getElementById('info-modal');
+const closeModal = document.getElementById('close-modal');
+
+if (infoBtn && infoModal && closeModal) {
+  infoBtn.addEventListener('click', () => {
+    infoModal.classList.remove('hidden');
+  });
+
+  closeModal.addEventListener('click', () => {
+    infoModal.classList.add('hidden');
+  });
+
+  // Close on click outside
+  window.addEventListener('click', (event) => {
+    if (event.target === infoModal) {
+      infoModal.classList.add('hidden');
+    }
+  });
+}
+
 startBtn.addEventListener('click', () => {
   const nickname = nicknameInput.value.trim();
   if (!nickname) {
