@@ -22,16 +22,23 @@ export const initSupabase = () => {
 
 export const saveScore = async (nickname, score) => {
     if (!supabase) return;
-    const { error } = await supabase
+    console.log(`[Supabase] Attempting to save score: ${nickname} - ${score}`);
+    const { data, error } = await supabase
         .from('scores')
-        .insert([{ nickname, score }]);
+        .insert([{ nickname, score }])
+        .select();
 
-    if (error) console.error('Error saving score:', error);
+    if (error) {
+        console.error('[Supabase] Error saving score:', error);
+    } else {
+        console.log('[Supabase] Score saved successfully:', data);
+    }
 };
 
 export const getLeaderboard = async () => {
     if (!supabase) return [];
 
+    console.log('[Supabase] Fetching leaderboard...');
     const { data, error } = await supabase
         .from('scores')
         .select('*')
@@ -39,8 +46,9 @@ export const getLeaderboard = async () => {
         .limit(10);
 
     if (error) {
-        console.error('Error fetching leaderboard:', error);
+        console.error('[Supabase] Error fetching leaderboard:', error);
         return [];
     }
+    console.log('[Supabase] Leaderboard fetched:', data);
     return data;
 };
