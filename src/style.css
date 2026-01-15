@@ -154,6 +154,85 @@ button:active {
   transform: scale(0.95);
 }
 
+z-index: 100;
+/* Ensure it's above everything */
+box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Input Styles */
+.input-group {
+  margin-bottom: 20px;
+}
+
+#nickname-input {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 0 5px var(--matrix-green);
+  outline: none;
+  text-transform: uppercase;
+}
+
+#nickname-input::placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+/* Leaderboard Styles */
+.leaderboard {
+  margin-top: 20px;
+  width: 300px;
+  background: rgba(0, 20, 0, 0.8);
+  border: 1px solid var(--matrix-green);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  padding: 15px;
+  text-align: center;
+}
+
+.leaderboard h3 {
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid var(--matrix-green);
+  padding-bottom: 5px;
+  text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+.leaderboard li:last-child {
+  border-bottom: none;
+}
+
+/* Scrollbar for leaderboard */
+.leaderboard ul::-webkit-scrollbar {
+  width: 5px;
+}
+
+.leaderboard ul::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.leaderboard ul::-webkit-scrollbar-thumb {
+  background: var(--matrix-green);
+}
+
 .hud {
   position: absolute;
   top: 20px;
