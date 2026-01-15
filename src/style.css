@@ -84,6 +84,28 @@ h1 {
   letter-spacing: 5px;
 }
 
+.instructions {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--matrix-green);
+  text-shadow: 0 0 5px var(--matrix-green);
+  opacity: 0.8;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border: 1px solid var(--matrix-green);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.instructions strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--matrix-green);
+  padding-bottom: 5px;
+}
+
 button {
   background: transparent;
   color: var(--matrix-green);
@@ -135,10 +157,12 @@ button:active {
 .hud {
   position: absolute;
   top: 20px;
-  right: -150px;
-  /* Positioned relative to game container */
-  width: 120px;
+  left: 20px;
+  width: auto;
   text-align: left;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border: 1px solid var(--matrix-dark);
 }
 
 @media (max-width: 600px) {
