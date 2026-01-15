@@ -160,20 +160,27 @@ button:active {
   left: 20px;
   width: auto;
   text-align: left;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   padding: 10px;
   border: 1px solid var(--matrix-dark);
+  z-index: 100;
+  /* Ensure it's above everything */
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
 }
 
 @media (max-width: 600px) {
   .hud {
     position: absolute;
-    top: -50px;
-    right: 0;
-    width: 100%;
+    top: 10px;
+    /* Keep it visible on mobile */
+    left: 10px;
+    right: auto;
+    width: auto;
     display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
+    flex-direction: column;
+    /* Stack on mobile too, or row if preferred */
+    gap: 5px;
+    padding: 5px;
     box-sizing: border-box;
     font-size: 0.8rem;
   }
