@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+  --matrix-bg: #000;
+  --matrix-green: #0F0;
+  --matrix-dark: #001a00;
+  --glow: 0 0 10px var(--matrix-green);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--matrix-bg);
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--matrix-green);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background Canvas */
+#bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Game Container - layers the game canvas and UI */
+#game-container {
+  position: relative;
+  z-index: 10;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--matrix-dark);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+#game-canvas {
+  display: block;
+  border: 1px solid var(--matrix-green);
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* UI Overlay */
+.ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  z-index: 50;
+  /* Let clicks pass through if needed, but usually this blocks game */
+}
+
+.ui-overlay.hidden {
+  display: none;
+  pointer-events: none;
+}
+
+.ui-overlay.interactive {
+  pointer-events: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  text-shadow: var(--glow);
+  margin-bottom: 2rem;
+  letter-spacing: 5px;
+}
+
+button {
+  background: transparent;
+  color: var(--matrix-green);
+  border: 2px solid var(--matrix-green);
+  padding: 10px 30px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-shadow: 0 0 5px var(--matrix-green);
+  box-shadow: 0 0 5px var(--matrix-green);
+  transition: all 0.2s;
+  user-select: none;
+}
+
+button:hover {
+  background: var(--matrix-green);
+  color: black;
+  box-shadow: 0 0 20px var(--matrix-green);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px var(--matrix-green);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--matrix-green);
+    transform: scale(1.05);
+  }
+
+  100% {
+    box-shadow: 0 0 5px var(--matrix-green);
+    transform: scale(1);
+  }
+}
+
+button#start-btn {
+  animation: pulse 2s infinite;
+}
+
+button:active {
+  background: var(--matrix-green);
+  color: black;
+  box-shadow: 0 0 20px var(--matrix-green);
+  transform: scale(0.95);
+}
+
+.hud {
+  position: absolute;
+  top: 20px;
+  right: -150px;
+  /* Positioned relative to game container */
+  width: 120px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .hud {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile Controls */
+.mobile-controls {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.mobile-controls.hidden {
+  display: none;
+}
+
+.control-row {
+  display: flex;
+  gap: 20px;
+}
+
+.control-row.middle {
+  gap: 30px;
+}
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 24px;
+  background: rgba(0, 20, 0, 0.3);
+  /* Slightly green tinted dark bg */
+  border: 1px solid var(--matrix-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}

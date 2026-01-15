@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrix Tetris</title>
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <div id="app">
+    <div id="game-container">
+      <canvas id="game-canvas"></canvas>
+    </div>
+    <div class="hud">
+      <div id="score-display">SCORE: 0</div>
+      <div id="level-display">LEVEL: 1</div>
+      <div id="lines-display">LINES: 0</div>
+    </div>
+
+    <!-- Start Screen / Game Over Overlay -->
+    <div id="ui-overlay" class="ui-overlay interactive">
+      <h1 id="title">TETRIS</h1>
+      <button id="start-btn">CLICK TO START</button>
+    </div>
+
+    <!-- Mobile Controls -->
+    <div id="mobile-controls" class="mobile-controls hidden">
+      <div class="control-row">
+        <button id="btn-rotate" class="control-btn">↻</button>
+      </div>
+      <div class="control-row middle">
+        <button id="btn-left" class="control-btn">←</button>
+        <button id="btn-down" class="control-btn">↓</button>
+        <button id="btn-right" class="control-btn">→</button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
