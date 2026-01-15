@@ -3,7 +3,8 @@ import { TETROMINOS } from './constants';
 export class Tetromino {
     constructor(type) {
         this.type = type;
-        this.matrix = TETROMINOS[type].shape;
+        // Deep copy to prevent mutation of the constant
+        this.matrix = TETROMINOS[type].shape.map(row => [...row]);
         this.color = TETROMINOS[type].color;
 
         // Position (starts centered at top)

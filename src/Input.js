@@ -7,21 +7,26 @@ export class InputHandler {
 
     setupKeyboard() {
         document.addEventListener('keydown', (event) => {
-            switch (event.keyCode) {
-                case 37: // Left
+            // Prevent default scrolling for arrow keys
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
+                event.preventDefault();
+            }
+
+            switch (event.key) {
+                case 'ArrowLeft':
                     this.game.move(-1);
                     break;
-                case 39: // Right
+                case 'ArrowRight':
                     this.game.move(1);
                     break;
-                case 40: // Down
+                case 'ArrowDown':
                     this.game.drop();
                     break;
-                case 38: // Up
+                case 'ArrowUp':
                     this.game.rotate();
                     break;
-                case 32: // Space (Hard drop? or pause?) - let's make it Drop for now or Pause
-                    // this.game.hardDrop(); // Logic not implemented yet
+                case ' ':
+                    this.game.hardDrop();
                     break;
             }
         });
@@ -40,21 +45,37 @@ export class InputHandler {
         }
 
         // Touch events - preventing default to avoid double-tap zoom etc.
-        const bindBtn = (btn, action) => {
+        const bindBtn = (btn, action, continuous = false) => {
             if (!btn) return;
-            btn.addEventListener('touchstart', (e) => {
-                e.preventDefault();
+            let intervalId = null;
+
+            const startAction = (e) => {
+                if (e.cancelable) e.preventDefault();
                 action();
-            });
-            btn.addEventListener('mousedown', (e) => { // Setup for mouse testing
-                e.preventDefault();
-                action();
-            });
+                if (continuous) {
+                    if (intervalId) clearInterval(intervalId);
+                    intervalId = setInterval(action, 100); // 100ms repeat for fast drop
+                }
+            };
+
+            const endAction = (e) => {
+                if (e.cancelable) e.preventDefault();
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+            };
+
+            btn.addEventListener('touchstart', startAction, { passive: false });
+            btn.addEventListener('touchend', endAction);
+            btn.addEventListener('mousedown', startAction);
+            btn.addEventListener('mouseup', endAction);
+            btn.addEventListener('mouseleave', endAction);
         };
 
         bindBtn(leftBtn, () => this.game.move(-1));
         bindBtn(rightBtn, () => this.game.move(1));
-        bindBtn(downBtn, () => this.game.drop());
+        bindBtn(downBtn, () => this.game.drop(), true); // Enable continuous for drop
         bindBtn(rotateBtn, () => this.game.rotate());
     }
 }
