@@ -154,11 +154,6 @@ button:active {
   transform: scale(0.95);
 }
 
-z-index: 100;
-/* Ensure it's above everything */
-box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
-}
-
 /* Input Styles */
 .input-group {
   margin-bottom: 20px;
