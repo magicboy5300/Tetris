@@ -146,7 +146,17 @@ export class TetrisGame {
             this.activePiece.y--;
             this.lock();
         }
-        this.dropCounter = 0; // Reset drop timer on manual drop? Usually soft drop resets or speeds up
+        this.dropCounter = 0;
+    }
+
+    hardDrop() {
+        if (this.gameOver || this.paused) return;
+        while (!this.checkCollision(this.activePiece)) {
+            this.activePiece.y++;
+        }
+        this.activePiece.y--;
+        this.lock();
+        this.dropCounter = 0;
     }
 
     lock() {

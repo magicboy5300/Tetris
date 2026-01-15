@@ -7,12 +7,12 @@ export class InputHandler {
 
     setupKeyboard() {
         document.addEventListener('keydown', (event) => {
-            // Prevent default scrolling for arrow keys
-            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
+            // Prevent default scrolling for arrow keys and Space
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space'].includes(event.code)) {
                 event.preventDefault();
             }
 
-            switch (event.key) {
+            switch (event.code) {
                 case 'ArrowLeft':
                     this.game.move(-1);
                     break;
@@ -25,7 +25,7 @@ export class InputHandler {
                 case 'ArrowUp':
                     this.game.rotate();
                     break;
-                case ' ':
+                case 'Space':
                     this.game.hardDrop();
                     break;
             }
